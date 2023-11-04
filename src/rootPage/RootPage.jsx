@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../pages/shared/Footer";
-import Home from "../pages/shared/Home";
+import Navvar from "../pages/shared/Navvar";
 
 
 const RootPage = () => {
     return (
         <div>
-            <Home></Home>
+            <Navvar></Navvar>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
