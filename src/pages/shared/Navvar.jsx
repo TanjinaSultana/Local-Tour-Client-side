@@ -50,7 +50,7 @@ const Navvar = () => {
             </>:
 		<div className="items-center flex-shrink-0 hidden lg:flex">
 			{/* <button className="self-center px-8 py-3 rounded">Sign in</button> */}
-			<button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Login</button>
+			<NavLink to='/login' className=" btn self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Login</NavLink>
 			{/* <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Logout</button> */}
 		</div>
         }
