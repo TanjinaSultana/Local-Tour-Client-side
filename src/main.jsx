@@ -13,11 +13,12 @@ import Register from './components/routes/Register';
 import Home from './components/routes/HomePage/Home';
 import AuthProvider from './firebase/AuthProvider';
 import AddProduct from './components/dashboardMenus/AddProduct';
+import ManageService from './components/routes/manageService/ManageService';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage></RootPage>,
-    loader: () => fetch('http://localhost:5000/product'),
+   
     children:[
       
       {
@@ -37,7 +38,12 @@ const router = createBrowserRouter([
           path: "/addProduct",
           element: <AddProduct></AddProduct>
         },
-      
+        {
+          path: "/manageServices",
+          element: <ManageService></ManageService>,
+          loader: () => fetch('http://localhost:5000/product'),
+        },
+        
     ]
   },
 ]);
