@@ -8,14 +8,14 @@ import toast from "react-hot-toast";
 
 const AddProduct = () => {
     const {user} = useContext(AuthContext);
-    const [name,setName] = useState(user?.displayName || "");
+    const [name,setName] = useState(user?.displayName);
     const [serviceName,setServiceName] = useState("");
     const [image,setImage] = useState("");
-    const [email,setEmail] = useState(user?.email || "");
+    const [email,setEmail] = useState(user?.email);
     const [area,setArea] = useState("");
     const [price,setPrice] = useState( "");
     const [shortDesc,setShortDesc] = useState("");
-    
+    //console.log(name,email);
     
     const handleAdd = (e) =>{
         e.preventDefault();

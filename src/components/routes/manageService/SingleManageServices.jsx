@@ -1,10 +1,50 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import React from 'react';
+
+import Swal from 'sweetalert2';
+
 
 const SingleManageServices = ({service}) => {
-    const {serviceName,image,price,area} = service;
+   
+    const {serviceName,image,price,area,_id} = service;
+const handleDelete = (id) => {
+    
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+         
+          fetch(`http://localhost:5000/product/${id}`,{
+            method:'DELETE'
+          })
+          .then(res=>res.json())
+          .then(data =>{
 
+
+              console.log(data)
+              if(data.deletedCount>0){
+                Swal.fire(
+                    'Deleted!',
+                    'Your Service has been deleted.',
+                    'success'
+                  ) 
+              }
+          }
+            )
+        }
+      })
+}
+
+    
     return (
+                      
+
         <div className='flex justify-center '>
            
             <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100 rounded-lg">
@@ -24,7 +64,7 @@ const SingleManageServices = ({service}) => {
 						</div>
 					</div>
 					<div className="flex text-sm divide-x">
-						<button type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
+						<button onClick={()=>handleDelete(_id)} type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
 								<path d="M96,472a23.82,23.82,0,0,0,23.579,24H392.421A23.82,23.82,0,0,0,416,472V152H96Zm32-288H384V464H128Z"></path>
 								<rect width="32" height="200" x="168" y="216"></rect>
@@ -32,7 +72,7 @@ const SingleManageServices = ({service}) => {
 								<rect width="32" height="200" x="312" y="216"></rect>
 								<path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
 							</svg>
-							<span>Remove</span>
+							<span >Remove</span>
 						</button>
 						{/* <button type="button" className="flex items-center px-2 py-1 space-x-1">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
@@ -55,6 +95,7 @@ const SingleManageServices = ({service}) => {
 	</div>
 </div>
         </div>
+                       
     );
 };
 
