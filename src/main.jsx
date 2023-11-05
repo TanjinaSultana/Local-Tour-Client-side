@@ -11,6 +11,7 @@ import RootPage from './rootPage/RootPage';
 import Login from './components/routes/Login';
 import Register from './components/routes/Register';
 import Home from './components/routes/HomePage/Home';
+import AuthProvider from './firebase/AuthProvider';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
+
      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

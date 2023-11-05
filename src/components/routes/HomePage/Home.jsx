@@ -2,6 +2,7 @@ import Banner from "./Banner";
 import CallToAction from "./CallToAction";
 import Gallery from "./Gallery";
 import Pricing from "./Pricing";
+import Review from "./Review";
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
             <Gallery></Gallery>
             <CallToAction></CallToAction>
             <Pricing></Pricing>
+            <Review></Review>
         </div>
     );
 };
