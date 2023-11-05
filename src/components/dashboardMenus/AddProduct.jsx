@@ -11,6 +11,7 @@ const AddProduct = () => {
     const [name,setName] = useState(user?.displayName);
     const [serviceName,setServiceName] = useState("");
     const [image,setImage] = useState("");
+    const [providerImage,setProviderImage] = useState("");
     const [email,setEmail] = useState(user?.email);
     const [area,setArea] = useState("");
     const [price,setPrice] = useState( "");
@@ -19,14 +20,14 @@ const AddProduct = () => {
     
     const handleAdd = (e) =>{
         e.preventDefault();
-       console.log({serviceName,name,image,email,area,price,shortDesc});
+       console.log({serviceName,name,image,providerImage,email,area,price,shortDesc});
        const userData=  {serviceName,name,image,email,area,price,shortDesc}
     //    axios.post('http://localhost:5000/product',userData)
     //    .then(res =>{
     //     console.log(res.data);
     //    }  )
     
-    fetch('http://localhost:5000/product',{
+    fetch('http://localhost:5000/service',{
         method:'POST',
         headers:{
           'content-type':'application/json'
@@ -70,6 +71,11 @@ setServiceName(e.target.value)} id="name" name="serviceName" type="text" placeho
 setImage(e.target.value)} id="photo" name="image" type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
+					<label  className="text-sm">Service Provider Image</label>
+					<input onChange={(e) =>
+setProviderImage(e.target.value)} id="photo" name="image" type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+				</div>
+				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Email</label>
 					<input onChange={(e) =>
 setEmail(e.target.value)} id="email" name="email" type="email" defaultValue={user?.email} placeholder="Email" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
@@ -77,7 +83,7 @@ setEmail(e.target.value)} id="email" name="email" type="email" defaultValue={use
 				
 				<div className="col-span-full sm:col-span-3">
                 <div>
-				<label for="name" className="block mb-2 text-sm">Name</label>
+				<label htmlFor="name" className="block mb-2 text-sm">Name</label>
 				<input onChange={(e) =>
 setName(e.target.value)} type="name" name="name" defaultValue={user?.displayName} id="name" placeholder="Enter Your Name" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 			</div>
@@ -100,7 +106,7 @@ setShortDesc(e.target.value)} name="shortDesc"  className="w-full rounded-md foc
 				</div>
                 <div className="col-span-full sm:col-span-6  flex justify-center">
 
-				<button  className="btn px-8 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800" onClick={handleAdd} >Add Product</button>
+				<button  className="btn px-8 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800" onClick={handleAdd} >Add Service</button>
                 </div>
 			</div>
 		</fieldset>
