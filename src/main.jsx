@@ -12,6 +12,7 @@ import Login from './components/routes/Login';
 import Register from './components/routes/Register';
 import Home from './components/routes/HomePage/Home';
 import AuthProvider from './firebase/AuthProvider';
+import AddProduct from './components/dashboardMenus/AddProduct';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         {
           path: "/register",
           element: <Register></Register>
+        },
+        {
+          path: "/addProduct",
+          element: <AddProduct></AddProduct>
         },
       
     ]

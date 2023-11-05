@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { createContext, useEffect, useState } from 'react';
 import app from './firebase.config';
 import {
