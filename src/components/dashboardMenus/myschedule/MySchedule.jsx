@@ -1,24 +1,43 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable react/no-unknown-property */
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../firebase/AuthProvider";
 import Booking from "./Booking";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import AxiosUse from "../../../hook/AxiosUse";
 
 
 
 const MySchedule = () => {
     const {user} = useContext(AuthContext);
+    //console.log(user?.email);
     const [booking,setBooking] = useState([]);
-    const url = `http://localhost:5000/userService?userEmail=${user?.email}`
+    const axiosSecure = AxiosUse()
+    //const navigate = useNavigate();
+    const url =`/userService?userEmail=${user?.email}`
+   
     useEffect(()=>{
-fetch(url)
-.then(res=>res.json())
-.then(data=>{
-    setBooking(data);
-})
-    },[url])
+        axiosSecure.get(url)
+        .then(res =>{
+            setBooking(res.data);
+        })
+// fetch(url,{credentials:'include'})
+// .then(res=> res.json())
+// .then(data=>{
+   
+//     setBooking(data);
+   
+// })
+    },[url,axiosSecure])
+    console.log(booking);
     return (
         <div>
             <h1>{booking.length}</h1>
+            {
+                booking.length<1?<h1>No Services Are Booked</h1>
+                :(
+
             <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100 ">
 
 	<div className="">
@@ -57,6 +76,8 @@ fetch(url)
 		</table>
 	</div>
 </div>
+                )
+            }
           
         </div>
     )

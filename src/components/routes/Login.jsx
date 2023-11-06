@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable react/no-unescaped-entities */
  /* eslint-disable react/no-unknown-property */
 
@@ -5,6 +6,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../firebase/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 
 const Login = () => {
@@ -13,16 +15,50 @@ const Login = () => {
 	const [password,setPassword] = useState('');
 	const [error,setError] = useState('');
 	const navigate = useNavigate();
+
+
+
+
+
+
 	const handleLogin = (e) =>{
 		e.preventDefault();
 		setError("");
 		if((email&&password)){
 			signIn(email,password)
 			.then(result =>{
-				console.log(result.user);
+				const logUser = result.user;
+				console.log(logUser);
+				const user = {email};
 				toast.success("Login Successfully")
 				navigate('/')
-			})
+				axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+				.then(res =>
+					{
+						console.log(res.data);
+						if(res.data.success){
+							navigate("/")
+						}
+					})
+			
+	// 			fetch('http://localhost:5000/jwt',{
+    //     method:'POST',
+    //     headers:{
+    //       'content-type':'application/json'
+    //     },
+    //     body:JSON.stringify(user)
+    //   },{credentials:'include'})
+    //   .then(res =>res.json() )
+    //   .then(data=>{
+    //     console.log(data);
+    //     if(data.success){
+    //       toast.success("Login successfully");
+	// 	  navigate('/');
+    //     }
+    //   })
+			
+			
+				})
 			.catch(err => setError(err.message))
 		}
 	}

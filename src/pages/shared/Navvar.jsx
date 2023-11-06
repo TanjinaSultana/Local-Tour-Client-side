@@ -4,16 +4,16 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../firebase/AuthProvider";
 
 const Navvar = () => {
-	const {user ,logOut } = useContext(AuthContext)
+	const {user ,logout } = useContext(AuthContext)
     const [isDropdown,setIsDropdown] = useState(false);
     const dropDown =() =>{
         setIsDropdown(!isDropdown)
     }
-	// const handleLogOut = () =>{
-	// 	logOut()
-	// 	.then(()=>{})
-	// 	.catch(err =>console.log(err))
-	// }
+	const handleLogOut = () =>{
+		logout()
+		.then(()=>{})
+		.catch(err =>console.log(err))
+	}
     return (
         <div>
             <header className="p-4 dark:bg-gray-800 dark:text-gray-100 ">
@@ -57,8 +57,14 @@ const Navvar = () => {
             </>:
 		<div className="items-center flex-shrink-0 hidden lg:flex">
 			{/* <button className="self-center px-8 py-3 rounded">Sign in</button> */}
+{
+	user?<><button onClick={handleLogOut}>Logout</button></>:
+	(
 
-			<NavLink to='/login' className=" btn self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Login</NavLink>
+		<NavLink to='/login' className=" btn self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Login</NavLink>
+	)
+}
+
 			{/* <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Logout</button> */}
 		</div>
         }
