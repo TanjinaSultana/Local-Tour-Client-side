@@ -3,7 +3,7 @@ import React from 'react';
 import Swal from 'sweetalert2';
 
 const UpdateService = ({open,close,service}) => {
-    const {_id,serviceName,name,image,email,area,price,shortDesc} = service;
+    const {_id,serviceName,name,image,email,area,price,shortDesc,providerImage} = service;
     if(!open){
         return null;
     }
@@ -77,6 +77,10 @@ const UpdateService = ({open,close,service}) => {
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Image</label>
 					<input  id="photo" name="image" defaultValue={image} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+				</div>
+				<div className="col-span-full sm:col-span-3">
+					<label  className="text-sm">Service Image</label>
+					<input  id="photo" name="image" defaultValue={providerImage} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Email</label>

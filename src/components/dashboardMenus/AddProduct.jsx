@@ -8,10 +8,12 @@ import toast from "react-hot-toast";
 
 const AddProduct = () => {
     const {user} = useContext(AuthContext);
+    console.log(user);
+    console.log(user?.photoURL);
     const [name,setName] = useState(user?.displayName);
     const [serviceName,setServiceName] = useState("");
     const [image,setImage] = useState("");
-    const [providerImage,setProviderImage] = useState("");
+    const [providerImage,setProviderImage] = useState(user?.photoURL);
     const [email,setEmail] = useState(user?.email);
     const [area,setArea] = useState("");
     const [price,setPrice] = useState( "");
@@ -73,7 +75,7 @@ setImage(e.target.value)} id="photo" name="image" type="text" placeholder="Servi
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Provider Image</label>
 					<input onChange={(e) =>
-setProviderImage(e.target.value)} id="photo" name="image" type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+setProviderImage(e.target.value)} id="photo" name="image" defaultValue={user?.photoURL} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Email</label>
