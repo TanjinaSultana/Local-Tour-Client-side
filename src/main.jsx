@@ -16,6 +16,7 @@ import AddProduct from './components/dashboardMenus/AddProduct';
 import ManageService from './components/routes/manageService/ManageService';
 import PrivateRoute from './router/PrivateRoute';
 import Service from './components/routes/ServicePage/Service';
+import SingleService from './components/routes/ServicePage/SingleService';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +57,14 @@ const router = createBrowserRouter([
             <ManageService></ManageService>
           </PrivateRoute>
           ,
+          loader: () => fetch('http://localhost:5000/service'),
+        },
+        
+        {
+          path: "/:_id",
+          element: <PrivateRoute>
+         <SingleService></SingleService>
+          </PrivateRoute>,
           loader: () => fetch('http://localhost:5000/service'),
         },
         

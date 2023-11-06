@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Services = ({service}) => {
     const {serviceName,image,price,area,_id,providerImage,name,shortDesc} = service;
@@ -46,9 +47,11 @@ const Services = ({service}) => {
 		<button title="Open options" type="button">
 			
 		</button>
+		<Link to={`/${_id}`}>
     <button type="button" className="flex items-center justify-end  p-1 space-x-1.5">
 				View Details
 			</button>
+		</Link>
 	</div>
 	</div>
 </div>

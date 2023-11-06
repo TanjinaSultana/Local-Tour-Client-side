@@ -65,7 +65,7 @@ const AddProduct = () => {
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Name</label>
 					<input onChange={(e) =>
-setServiceName(e.target.value)} id="name" name="serviceName" type="text" placeholder="Service Name" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+setServiceName(e.target.value)} id="serviceName" name="serviceName" type="text" placeholder="Service Name" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Image</label>
@@ -75,7 +75,7 @@ setImage(e.target.value)} id="photo" name="image" type="text" placeholder="Servi
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Provider Image</label>
 					<input onChange={(e) =>
-setProviderImage(e.target.value)} id="photo" name="image" defaultValue={user?.photoURL} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+setProviderImage(e.target.value)} id="providerImage" name="providerImage" defaultValue={user?.photoURL} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Email</label>

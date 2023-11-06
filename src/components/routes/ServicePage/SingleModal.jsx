@@ -1,58 +1,58 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import Swal from 'sweetalert2';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../firebase/AuthProvider';
+import toast from 'react-hot-toast';
 
-const UpdateService = ({open,close,service}) => {
-    const {_id,serviceName,name,image,email,area,price,shortDesc,providerImage} = service;
+const SingleModal = ({service,open,close}) => {
+    const {user} = useContext(AuthContext)
+    const {_id,serviceName,name,image,email,price,providerImage} = service;
+    console.log(name);
     if(!open){
         return null;
     }
-    const handleUpdate = (e) =>{
+    const handleBook = (e) =>{
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
+        const userEmail = form.userEmail.value;
         const image = form.image.value;
+        const providerImage = form.providerImage.value;
         const serviceName = form.serviceName.value;
         const area = form.area.value;
-        const shortDesc = form.shortDesc.value;
+        const date = form.date.value;
+        
         const price = form.price.value;
         // const rating = form.Rating.value;
-        const updateProduct = {serviceName,name,image,email,area,price,shortDesc};
-        fetch(`http://localhost:5000/service/${_id}`,{
-            method:'PUT',
+        const updateProduct = {serviceName,name,providerImage,userEmail,image,email,area,price,date};
+        console.log(updateProduct);
+        fetch('http://localhost:5000/service',{
+            method:'POST',
             headers:{
-                'content-type':'application/json'
-              },
-              body:JSON.stringify(updateProduct)
-        })
+              'content-type':'application/json'
+            },
+            body:JSON.stringify(updateProduct)
+          })
           .then(res =>res.json() )
           .then(data=>{
             console.log(data);
-            if(data.modifiedCount>0){
-                Swal.fire(
-                    'Good job!',
-                    'Your Services Are Updated!',
-                    'success'
-                  )
+            if(data.insertedId){
+              toast.success("Data Added successfully");
             }
           })
     }
-   // console.log(service);
+   
     return (
         <div>
+             <div>
             <div className="relative  flex flex-col items-center max-w-lg gap-4 p-6 rounded-md shadow-md sm:py-8 sm:px-12 dark:bg-gray-900 dark:text-gray-100">
 	<button onClick={close} className="absolute top-2 right-2">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-6 h-6">
 			<polygon points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>
 		</svg>
 	</button>
-
-	{/* <h2 className="text-2xl font-semibold leadi tracki">Quis vel eros donec ac odio tempor.</h2>
-	<p className="flex-1 text-center dark:text-gray-400">Tempora ipsa quod magnam non, dolores nemo optio. Praesentium soluta maiores non itaque aliquam sint.</p>
-	<button type="button" className="px-8 py-3 font-semibold rounded-full dark:bg-violet-400 dark:text-gray-900">Start recycling</button> */}
        <section className="p-6 ">
-	<form  onSubmit={handleUpdate} className="container flex flex-col mx-auto space-y-12">
+	<form  onSubmit={handleBook} className="container flex flex-col mx-auto space-y-12">
 		<fieldset  className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
 			<div className="space-y-2 col-span-full lg:col-span-1">
 				<p className="font-medium">Personal Inormation</p>
@@ -61,19 +61,23 @@ const UpdateService = ({open,close,service}) => {
 			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Name</label>
-					<input  id="name" defaultValue={serviceName} name="serviceName" type="text" placeholder="Service Name" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+					<input  id="serviceName" defaultValue={serviceName} name="serviceName" type="text" placeholder="Service Name" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly/>
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Image</label>
-					<input  id="photo" name="image" defaultValue={image} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+					<input  id="photo" name="image" defaultValue={image} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 				</div>
 				<div className="col-span-full sm:col-span-3">
-					<label  className="text-sm">Service Image</label>
-					<input  id="photo" name="image" defaultValue={providerImage} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+					<label  className="text-sm">Provider Image</label>
+					<input  id="providerImage" name="providerImage" defaultValue={providerImage} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly/>
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Email</label>
 					<input id="email" name="email" type="email" defaultValue={email} placeholder="Email" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
+				</div>
+				<div className="col-span-full sm:col-span-3">
+					<label  className="text-sm">User Email</label>
+					<input id="userEmail" name="userEmail" type="email" defaultValue={user?.email} placeholder="Email" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 				</div>
 				
 				<div className="col-span-full sm:col-span-3">
@@ -84,20 +88,24 @@ const UpdateService = ({open,close,service}) => {
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Service Area</label>
-					<input id="address" name="area" defaultValue={area} type="text" placeholder="Service Area" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+					<input id="address" name="area"  type="text" placeholder="Service Area" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+				</div>
+				<div className="col-span-full sm:col-span-3">
+					<label  className="text-sm">Service Taking Date</label>
+					<input id="date" name="date"  type="date" placeholder="Service Taking Date" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Price</label>
-					<input  id="price" name="price" defaultValue={price} type="number" placeholder="Service Price" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+					<input  id="price" name="price" defaultValue={price} type="number" placeholder="Service Price" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 				</div>
-				<div className="col-span-full sm:col-span-3">
+				{/* <div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">Short Description</label>
-					{/* <input id="state" type="text" placeholder="" className="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" /> */}
+					<input id="state" type="text" placeholder="" className="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
                 <textarea defaultValue={shortDesc} name="shortDesc"  className="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" rows="4" cols="50" maxLength="100" placeholder="Enter Description"></textarea>
-				</div>
+				</div>  */}
                 <div className="col-span-full sm:col-span-6  flex justify-center">
 
-				<button  className="btn px-8 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800" >Updated</button>
+				<button  className="btn px-8 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800" >Purchase Button</button>
                 </div>
 			</div>
 		</fieldset>
@@ -107,7 +115,8 @@ const UpdateService = ({open,close,service}) => {
 </section>
 </div>
         </div>
+        </div>
     );
 };
 
-export default UpdateService;
+export default SingleModal;
