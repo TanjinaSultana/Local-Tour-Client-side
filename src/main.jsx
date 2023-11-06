@@ -15,6 +15,7 @@ import AuthProvider from './firebase/AuthProvider';
 import AddProduct from './components/dashboardMenus/AddProduct';
 import ManageService from './components/routes/manageService/ManageService';
 import PrivateRoute from './router/PrivateRoute';
+import Service from './components/routes/ServicePage/Service';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,7 +38,12 @@ const router = createBrowserRouter([
           element: <Register></Register>
         },
         {
-          path: "/addProduct",
+          path: "/service",
+          element: <Service></Service>,
+          loader: () => fetch('http://localhost:5000/service')
+        },
+        {
+          path: "/addService",
           element: <PrivateRoute>
 
             <AddProduct></AddProduct>

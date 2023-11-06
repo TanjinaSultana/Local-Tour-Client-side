@@ -21,7 +21,7 @@ const Navvar = () => {
 				<NavLink to='/' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Home</NavLink>
 			</li>
 			<li className="flex">
-				<NavLink to='/services' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Services</NavLink>
+				<NavLink to='/service' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Services</NavLink>
 			</li>
 			<li className="flex">
          
