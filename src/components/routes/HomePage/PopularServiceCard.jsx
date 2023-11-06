@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PopularServiceCard = ({service}) => {
     const {_id,providerImage,serviceName,name,image,email,area,price,shortDesc} = service;
@@ -33,9 +34,11 @@ const PopularServiceCard = ({service}) => {
 		</div>
 			
 	</div>
+	<Link to={`/${_id}`}>
 			<button type="button" className="flex items-center justify-end  p-1 space-x-1.5">
 				View Details
 			</button>
+	</Link>
 </div>
         </div>
     );

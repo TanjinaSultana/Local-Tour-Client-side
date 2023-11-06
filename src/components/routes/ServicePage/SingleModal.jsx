@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 const SingleModal = ({service,open,close}) => {
     const {user} = useContext(AuthContext)
     const {_id,serviceName,name,image,email,price,providerImage} = service;
-    console.log(name);
+  
     if(!open){
         return null;
     }
@@ -25,8 +25,8 @@ const SingleModal = ({service,open,close}) => {
         const price = form.price.value;
         // const rating = form.Rating.value;
         const updateProduct = {serviceName,name,providerImage,userEmail,image,email,area,price,date};
-        console.log(updateProduct);
-        fetch('http://localhost:5000/service',{
+        
+        fetch('http://localhost:5000/userService',{
             method:'POST',
             headers:{
               'content-type':'application/json'

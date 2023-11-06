@@ -17,6 +17,7 @@ import ManageService from './components/routes/manageService/ManageService';
 import PrivateRoute from './router/PrivateRoute';
 import Service from './components/routes/ServicePage/Service';
 import SingleService from './components/routes/ServicePage/SingleService';
+import MySchedule from './components/dashboardMenus/myschedule/MySchedule';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,6 +67,13 @@ const router = createBrowserRouter([
          <SingleService></SingleService>
           </PrivateRoute>,
           loader: () => fetch('http://localhost:5000/service'),
+        },
+        {
+          path: "/schedule",
+          element: <PrivateRoute>
+         <MySchedule></MySchedule>
+          </PrivateRoute>,
+         
         },
         
     ]
