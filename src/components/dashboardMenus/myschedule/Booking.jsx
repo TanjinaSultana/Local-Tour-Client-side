@@ -6,7 +6,7 @@ const Booking = ({services}) => {
     const {serviceName,name,image,email,date,userEmail,price,providerImage,area} = services;
     return (
         <div>
-         <tbody className="border-b dark:bg-gray-900 dark:border-gray-700 ">
+         <tbody className="border-b  text-white bg-[#5E6284] ">
 				<tr className="">
 					<td className="px-3 text-2xl font-medium dark:text-gray-400 w-[100px]">
                         <img src={image} className=" rounded-lg h-[50px] w-[50px]"></img>

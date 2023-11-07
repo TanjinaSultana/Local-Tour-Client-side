@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import UpdateService from './updateService';
+import { Link } from 'react-router-dom';
 
 
 
@@ -12,7 +13,7 @@ import UpdateService from './updateService';
 
 const SingleManageServices = ({service,services,setServices}) => {
     const [isOpen,setIsOpen] = useState(false);
-    const {serviceName,image,price,area,_id,status} = service;
+    const {serviceName,image,price,area,_id} = service;
 const handleDelete = (_id) => {
     Swal.fire({
         title: 'Are you sure?',
@@ -72,7 +73,7 @@ const closeModal = ()=>{
 
         <div className='flex justify-center '>
            
-            <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100 rounded-lg">
+            <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 text-white bg-[#5E6284] rounded-lg">
 	<ul className="flex flex-col divide-y divide-gray-700 w-[520px]">
 		<li className="flex flex-col py-6 sm:flex-row sm:justify-between">
 			<div className="flex w-full space-x-2 sm:space-x-4">
@@ -84,7 +85,7 @@ const closeModal = ()=>{
 							<p className="text-sm dark:text-gray-400">{area}</p>
 						</div>
 						<div className="text-right">
-							<p className="text-lg font-semibold">{price}€</p>
+							<p className="text-lg font-semibold">${price}</p>
 							{/* <p className="text-sm line-through dark:text-gray-600">75.50€</p> */}
 						</div>
 					</div>
@@ -110,7 +111,7 @@ const closeModal = ()=>{
 			</div>
 		</li>
 		</ul>
-	<div className="flex justify-end space-x-4">
+	<div className="flex flex-col my-6 justify-end space-x-4">
 		{/* <button type="button" className="px-6 py-2 border rounded-md dark:border-violet-400">Back
 			<span className="sr-only sm:not-sr-only">to shop</span>
 		</button> */}
@@ -122,16 +123,7 @@ const closeModal = ()=>{
 				View Details
 			</button>
 	</Link> */}
-		{
-			
-			status === 'confirm'
-			?
-		<button onClick={()=> handleStatus(_id)}  type="button" className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">
-			<span className="sr-only sm:not-sr-only">Completed</span>
-		</button>
-			:
-			<span>Pending</span>
-		}
+		
         
                 <UpdateService open ={isOpen} close={closeModal} service={service}></UpdateService>
         

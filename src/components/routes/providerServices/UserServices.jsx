@@ -1,15 +1,11 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SingleProviderService = ({services}) => {
-    console.log(services);
+const UserServices = ({services}) => {
     const {serviceName,image,price,area,_id,providerImage,name} = services;
-    //const {serviceName} = services;
-    console.log(services);
     return (
-       
-        <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
+        <div>
+               <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
         <div className="flex space-x-4">
             <img alt="" src={providerImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
             <div className="flex flex-col space-y-1">
@@ -44,7 +40,8 @@ const SingleProviderService = ({services}) => {
                 </button>
         </Link>
     </div>
+        </div>
     );
 };
 
-export default SingleProviderService;
+export default UserServices;

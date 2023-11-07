@@ -30,19 +30,25 @@ const Navvar = () => {
 	}
     return (
         <div>
-            <header className="p-4 dark:bg-gray-800 dark:text-gray-100 ">
+            <header className="p-4  bg-[#EAEBF0] text-black">
 	<div className="container flex justify-between h-16 mx-auto mt-4">
 		<a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2 gap-2">
             <img src="logo.png" className="h-[70px] w-[70px] rounded-full"></img>
-            <h1 className="font-medium text-base">Local Tour & Guide</h1>
+            <h1 className="font-bold  text-xl">Local Tour & Guide</h1>
 			
 		</a>
+    {
+      user?
 		<ul className="items-stretch hidden space-x-3 lg:flex">
 			<li className="flex">
-				<NavLink to='/' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Home</NavLink>
+				<NavLink to='/' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  } >Home</NavLink>
 			</li>
 			<li className="flex">
-				<NavLink to='/service' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Services</NavLink>
+				<NavLink to='/service'  className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex font-bold items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2"
+  }>Services</NavLink>
 			</li>
 			<li className="flex">
         
@@ -55,8 +61,14 @@ const Navvar = () => {
       <motion.button
         whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
+       
       >
+        <NavLink  className = {({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? "flex items-center font-bold  px-4 -mb-1 border-b-2 " : "flex font-medium items-center px-4 mb-1 border-b-2 "
+      }>
+
        Dashboard
+        </NavLink>
         <motion.div
           variants={{
             open: { rotate: 180 },
@@ -90,18 +102,49 @@ const Navvar = () => {
           }
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-      >
-        <motion.li variants={itemVariants}>Item 1</motion.li>
-        <motion.li variants={itemVariants}>Item 2</motion.li>
-        <motion.li variants={itemVariants}>Item 3</motion.li>
-        <motion.li variants={itemVariants}>Item 4</motion.li>
-        <motion.li variants={itemVariants}>Item 5</motion.li>
+      ><div className="bg-[#FFBD76] p-10">
+
+
+        <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+  }  ><NavLink to='/manageServices' className = {({ isActive, isPending }) =>
+  isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+} >My Services</NavLink></motion.li>
+        <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+  } ><NavLink to='/addService'>Add Services</NavLink></motion.li>
+        <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+  } ><NavLink to='/schedule'>My Schedule</NavLink></motion.li>
+      </div>
+        
       </motion.ul>
     </motion.nav>
 
 	
 			</li>
 		</ul>
+    :(
+
+    <ul className="items-stretch hidden space-x-3 lg:flex">
+    <li className="flex">
+      <NavLink to='/'className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Home</NavLink>
+    </li>
+    <li className="flex">
+      <NavLink to='/service' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Services</NavLink>
+    </li>
+    <li className="flex">
+      <NavLink to='/providerService' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Single Service</NavLink>
+    </li>
+  </ul>
+    )
+    }
 
 
 
@@ -169,21 +212,12 @@ const Navvar = () => {
         <motion.li variants={itemVariants}>Item 5</motion.li>
       </motion.ul>
     </motion.nav>
-        {/* {
-            isDropdown ?
-            <>
 
-        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow text-black bg-black rounded-lg w-52 lg:hidden">
-        <li><NavLink to='/' rel="noopener noreferrer" href="#" className="flex items-center px-4 rounded-lg mt-4 bg-white border-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Home</NavLink></li>
-          <li><NavLink to='/services' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Services</NavLink></li>
-          </ul>
-            </>:
-        } */}
 		<div className="items-center flex-shrink-0 hidden lg:flex">
 			{
 				user?
-<button onClick={handleLogOut}>Logout</button>:
-<NavLink to='/login' className=" btn self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Login</NavLink>
+<button onClick={handleLogOut} className="font-bold p-4 rounded-lg text-white bg-[#5E6284]  text-xl">Logout</button>:
+<NavLink to='/login' className=" btn font-bold p-4 rounded-lg text-white bg-[#5E6284]  text-xl">Login</NavLink>
 			}
 	
 

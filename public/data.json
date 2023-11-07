@@ -1,0 +1,47 @@
+[
+
+
+
+    {
+        "serviceName": "Culinary Tour and Food Tasting",
+        "name": "Carlos Rodriguez",
+        "image": "https://i.ibb.co/mhRQSMj/imgs2.jpg",
+        "providerImage": "https://i.ibb.co/2jS6KPg/a1.jpg",
+        "providerEmail": "carlos@example.com",
+        "email": "booking@example.com",
+        "status": "confirm",
+        "area": "Downtown, Food District",
+        "price": 60,
+        "shortDesc": "Savor the local cuisine and indulge in a culinary adventure with our food tour."
+      },
+      {
+        "serviceName": "Historical City Walking Tour",
+        "name": "John Smith",
+        "image": "https://i.ibb.co/9sD3mcQ/imgs1.jpg",
+        "providerImage": "https://i.ibb.co/Fbfdj5H/a2.jpg",
+        "providerEmail": "john@example.com",
+        "email": "book@example.com",
+        "status": "pending",
+        "area": "Old Town, Historical District",
+        "price": 50,
+        "shortDesc": "Explore the rich history of our city on a guided walking tour."
+      },
+      {
+        "serviceName": "Nature Hike and Wildlife Guide",
+        "name": "Alice Johnson",
+        "image": "https://i.ibb.co/yyxwFhN/imgs3.jpg",
+        "providerImage": "guide_image2.jpg",
+        "providerEmail": "alice@example.com",
+        "email": "booking@example.com",
+        "status": "inprogress",
+        "area": "National Park, Wilderness Area",
+        "price": 75,
+        "shortDesc": "Discover the beauty of our natural surroundings with an experienced wildlife guide."
+      }
+      
+      
+
+      
+
+]
+  

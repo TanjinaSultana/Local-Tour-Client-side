@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Banner = () => {
@@ -10,7 +11,8 @@ const Banner = () => {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         height: '500px',
-        backgroundColor:'rebeccapurple'
+        backgroundColor:'rebeccapurple',
+		opacity:50
       }} className="h-screen">
 	<div className="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">
 		{/* <h1 className="text-4xl font-bold leadi sm:text-5xl">Quisquam necessita vel
@@ -35,7 +37,9 @@ const Banner = () => {
 				<span>Plus free Booking! Use code:</span>
 				<span className="font-bold text-lg">TourGuides</span>
 			</div>
+			<Link to='/service'>
 			<button className=" btn px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-white dark:text-gray-900">Book Now</button>
+			</Link>
             
 		</div>
 	</div>

@@ -29,17 +29,16 @@ const Login = () => {
 			.then(result =>{
 				const logUser = result.user;
 				console.log(logUser);
-				const user = {email};
 				toast.success("Login Successfully")
 				navigate('/')
-				axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
-				.then(res =>
-					{
-						console.log(res.data);
-						if(res.data.success){
-							navigate("/")
-						}
-					})
+				// axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+				// .then(res =>
+				// 	{
+				// 		console.log(res.data);
+				// 		if(res.data.success){
+				// 			navigate("/")
+				// 		}
+				// 	})
 			
 	// 			fetch('http://localhost:5000/jwt',{
     //     method:'POST',
@@ -68,17 +67,17 @@ const Login = () => {
 		.then(result =>{
 			const logUser = result.user;
 				console.log(logUser);
-				const user = {email};
+				//const user = {email};
 				toast.success("Login Successfully")
 				navigate('/')
-				axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
-				.then(res =>
-					{
-						console.log(res.data);
-						if(res.data.success){
-							navigate("/")
-						}
-					})
+				// axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+				// .then(res =>
+				// 	{
+				// 		console.log(res.data);
+				// 		if(res.data.success){
+				// 			navigate("/")
+				// 		}
+				// 	})
 		})
 	}
     return (

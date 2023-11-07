@@ -20,6 +20,8 @@ import SingleService from './components/routes/ServicePage/SingleService';
 import MySchedule from './components/dashboardMenus/myschedule/MySchedule';
 import ErrorPage from './components/routes/ErrorPage';
 import ProviderService from './components/routes/providerServices/ProviderService';
+import ProviderServiceDetails from './components/routes/providerServices/ProviderServiceDetails';
+import UpdateService from './components/routes/manageService/updateService';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +33,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/service')
+        loader: () => fetch('https://service-server-side-three.vercel.app/service')
       },
       {
         path: "/login",
@@ -45,12 +47,12 @@ const router = createBrowserRouter([
         {
           path: "/service",
           element: <Service></Service>,
-          loader: () => fetch('http://localhost:5000/service')
+          loader: () => fetch('https://service-server-side-three.vercel.app/service')
         },
         {
           path: "/providerService",
           element: <ProviderService></ProviderService>,
-          loader: () => fetch('http://localhost:5000/service')
+          loader: () => fetch('https://service-server-side-three.vercel.app/service')
         },
         {
           path: "/addService",
@@ -59,6 +61,7 @@ const router = createBrowserRouter([
             <AddProduct></AddProduct>
           </PrivateRoute>,
         },
+      
         {
           path: "/manageServices",
           element: <PrivateRoute>
@@ -66,7 +69,7 @@ const router = createBrowserRouter([
             <ManageService></ManageService>
           </PrivateRoute>
           ,
-          loader: () => fetch('http://localhost:5000/service')
+          loader: () => fetch('https://service-server-side-three.vercel.app/service')
         },
         
         {
@@ -74,14 +77,21 @@ const router = createBrowserRouter([
           element: <PrivateRoute>
          <SingleService></SingleService>
           </PrivateRoute>,
-          loader: () => fetch('http://localhost:5000/service')
+          loader: () => fetch('https://service-server-side-three.vercel.app/service')
+        },
+        {
+          path: "/:_id",
+          element: <PrivateRoute>
+         <ProviderServiceDetails></ProviderServiceDetails>
+          </PrivateRoute>,
+          loader: () => fetch('https://service-server-side-three.vercel.app/service')
         },
         {
           path: "/schedule",
           element: <PrivateRoute>
          <MySchedule></MySchedule>
           </PrivateRoute>,
-           loader: () => fetch('http://localhost:5000/service')
+           loader: () => fetch('https://service-server-side-three.vercel.app/service')
          
         },
         

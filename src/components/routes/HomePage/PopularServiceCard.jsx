@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 
 const PopularServiceCard = ({service}) => {
     const {_id,providerImage,serviceName,name,image,email,area,price,shortDesc} = service;
+	
     return (
         <div>
-           <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
+           <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md ">
 	<div className="flex space-x-4">
 		<img alt="" src={providerImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
 		<div className="flex flex-col space-y-1">
@@ -24,8 +25,8 @@ const PopularServiceCard = ({service}) => {
 			
 		</div>
 		<div className="flex space-x-2 text-sm dark:text-gray-400">
-			<button type="button" className="flex items-center -mt-52 p-1 space-x-1.5">
-				<span>Price:{price}</span>
+			<button type="button" className="flex items-center -mt-48 p-1 space-x-1.5">
+				<span className='text-xl'>Price: ${price}</span>
 			</button>
 			
 			
@@ -35,7 +36,7 @@ const PopularServiceCard = ({service}) => {
 			
 	</div>
 	<Link to={`/${_id}`}>
-			<button type="button" className="flex items-center justify-end  p-1 space-x-1.5">
+			<button type="button" className="flex text-xl font-normal items-center justify-end  p-3 rounded-lg space-x-1.5 text-white bg-[#5E6284] ">
 				View Details
 			</button>
 	</Link>

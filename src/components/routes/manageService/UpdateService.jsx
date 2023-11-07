@@ -53,10 +53,10 @@ const UpdateService = ({open,close,service}) => {
 	<button type="button" className="px-8 py-3 font-semibold rounded-full dark:bg-violet-400 dark:text-gray-900">Start recycling</button> */}
        <section className="p-6 ">
 	<form  onSubmit={handleUpdate} className="container flex flex-col mx-auto space-y-12">
-		<fieldset  className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
+		<fieldset  className="grid grid-cols-2 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
 			<div className="space-y-2 col-span-full lg:col-span-1">
-				<p className="font-medium">Personal Inormation</p>
-				<p className="text-xs">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci fuga autem eum!</p>
+				<p className="font-medium">Update Service</p>
+				
 			</div>
 			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 				<div className="col-span-full sm:col-span-3">
@@ -97,7 +97,7 @@ const UpdateService = ({open,close,service}) => {
 				</div>
                 <div className="col-span-full sm:col-span-6  flex justify-center">
 
-				<button  className="btn px-8 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800" >Updated</button>
+				<button  className="btn px-8 py-3 font-semibold rounded text-white bg-[#5E6284]" >Updated</button>
                 </div>
 			</div>
 		</fieldset>

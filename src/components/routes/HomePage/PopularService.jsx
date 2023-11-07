@@ -8,8 +8,8 @@ const PopularService = () => {
     
     return (
         <div className="mt-48">
-           <h1 className="text-center">Take a look <br></br >At Our Most Popular Tour</h1>
-           <div className="flex flex-col gap-10 border-2 justify-center items-center">
+           <h1 className="text-center text-3xl font-bold my-4">Take a look <br></br >At Our Most Popular Tour</h1>
+           <div className="flex flex-col gap-10  justify-center items-center">
 
             {
 

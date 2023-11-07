@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React, { createContext, useEffect, useState } from 'react';
 import app from './firebase.config';
@@ -12,6 +13,7 @@ import {
     updateProfile,
 } from "firebase/auth";
 import axios from 'axios';
+import AxiosUse from '../hook/AxiosUse';
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -46,13 +48,13 @@ const AuthProvider = ({children}) => {
             console.log("current",currentUser);
             setLoading(false)
             if(currentUser){
-                axios.post('http://localhost:5000/jwt',logUser,{withCredentials:true})
+                axios.post('https://service-server-side-three.vercel.app/jwt',logUser,{withCredentials:true})
                 .then(res =>{
                     console.log(res.data);
                 })
             }
             else{
-                axios.post('http://localhost:5000/logout',logUser,{withCredentials:true})
+                axios.post('https://service-server-side-three.vercel.app/logout',logUser,{withCredentials:true})
                 .then(res =>{
                     console.log(res.data);
                 })

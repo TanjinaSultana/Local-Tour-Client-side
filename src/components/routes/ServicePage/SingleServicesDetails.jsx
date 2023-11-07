@@ -16,17 +16,25 @@ const SingleServicesDetails = ({services}) => {
         }
     return (
         <div>
-            <section className="my-8 dark:bg-gray-800 dark:text-gray-100">
-	<div className="container flex flex-col  items-center p-4 mx-auto space-y-6 md:p-8">
-		<img src={image}></img>
-        <h1>{serviceName}</h1>
-		<p className="px-6 py-2 text-2xl font-semibold text-center sm:font-bold sm:text-3xl md:text-4xl lg:max-w-2xl xl:max-w-4xl dark:text-gray-300">{shortDesc}</p>
-        <p>{price}</p>
+            <section className="my-8   bg-[#EAEBF0] text-black">
+	<div className="container flex flex-col rounded-lg bg-[#EAEBF0] text-black items-center p-4 mx-auto space-y-6 md:p-8">
+		<img src={image} className="rounded-lg"></img>
+        
+		<p className="px-6 py-2 text-2xl font-semibold text-center sm:font-bold sm:text-3xl md:text-4xl lg:max-w-2xl xl:max-w-4xl ">{serviceName}</p>
+        <h1 className="text-gray-500 font-bold">{shortDesc}</h1>
+		<div className="flex gap-5 justify-center space-x-3">
+
+        
+        
+			<p className="text-sm leadi dark:text-gray-300">Area:{area}</p>
+			<p className="text-sm leadi dark:text-gray-300">price:{price}</p>
+		</div>
+      
 		<div className="flex justify-center space-x-3">
 			<img src={providerImage} alt="" className="w-20 h-20 bg-center bg-cover rounded-md dark:bg-gray-500 dark:bg-gray-700" />
 			<div>
 				<p className="leadi">{name}</p>
-				<p className="text-sm leadi dark:text-gray-300">{area}</p>
+				
 				<a className="flex items-center py-2 space-x-1 text-sm dark:text-violet-400" href="/">
 					<span>Read full story</span>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
