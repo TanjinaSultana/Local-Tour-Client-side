@@ -14,16 +14,16 @@ const AddProduct = () => {
     const [serviceName,setServiceName] = useState("");
     const [image,setImage] = useState("");
     const [providerImage,setProviderImage] = useState(user?.photoURL);
-    const [email,setEmail] = useState(user?.email);
+    const [providerEmail,setProviderEmail] = useState(user?.email);
     const [area,setArea] = useState("");
     const [price,setPrice] = useState( "");
     const [shortDesc,setShortDesc] = useState("");
-    //console.log(name,email);
+    //console.log(name,providerEmail);
     
     const handleAdd = (e) =>{
         e.preventDefault();
-       console.log({serviceName,name,image,providerImage,email,area,price,shortDesc});
-       const userData=  {serviceName,name,image,email,area,price,shortDesc}
+       console.log({serviceName,name,image,providerImage,providerEmail,area,price,shortDesc});
+       const userData=  {serviceName,name,image,providerEmail,area,price,shortDesc}
     //    axios.post('http://localhost:5000/product',userData)
     //    .then(res =>{
     //     console.log(res.data);
@@ -78,9 +78,9 @@ setImage(e.target.value)} id="photo" name="image" type="text" placeholder="Servi
 setProviderImage(e.target.value)} id="providerImage" name="providerImage" defaultValue={user?.photoURL} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
-					<label  className="text-sm">Email</label>
+					<label  className="text-sm">providerEmail</label>
 					<input onChange={(e) =>
-setEmail(e.target.value)} id="email" name="email" type="email" defaultValue={user?.email} placeholder="Email" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
+setProviderEmail(e.target.value)} id="providerEmail" name="providerEmail" type="providerEmail" defaultValue={user?.email} placeholder="providerEmail" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 				</div>
 				
 				<div className="col-span-full sm:col-span-3">

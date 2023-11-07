@@ -17,13 +17,13 @@ const AxiosUse = () => {
             return res;
         
         },error =>{
-            if(error.response.status === 401 || error.response.status === 403){
-                logout()
-                .then(()=>{
-                    navigate("/login")
-                })
-                .catch(err =>console.log(err))
-            }
+            // if(error.response.status === 401 || error.response.status === 403){
+            //     logout()
+            //     .then(()=>{
+            //         navigate("/login")
+            //     })
+            //     .catch(err =>console.log(err))
+            // }
             //console.log("logout the user");
         })
     },[])

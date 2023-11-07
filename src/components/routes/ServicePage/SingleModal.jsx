@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const SingleModal = ({service,open,close}) => {
     const {user} = useContext(AuthContext)
-    const {_id,serviceName,name,image,email,price,providerImage} = service;
+    const {_id,serviceName,name,image,providerEmail,price,providerImage} = service;
   
     if(!open){
         return null;
@@ -14,8 +14,8 @@ const SingleModal = ({service,open,close}) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
+        const providerEmail = form.providerEmail.value;
         const email = form.email.value;
-        const userEmail = form.userEmail.value;
         const image = form.image.value;
         const providerImage = form.providerImage.value;
         const serviceName = form.serviceName.value;
@@ -24,7 +24,7 @@ const SingleModal = ({service,open,close}) => {
         
         const price = form.price.value;
         // const rating = form.Rating.value;
-        const updateProduct = {serviceName,name,providerImage,userEmail,image,email,area,price,date};
+        const updateProduct = {serviceName,name,providerImage,email,image,providerEmail,area,price,date};
         
         fetch('http://localhost:5000/userService',{
             method:'POST',
@@ -72,12 +72,12 @@ const SingleModal = ({service,open,close}) => {
 					<input  id="providerImage" name="providerImage" defaultValue={providerImage} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly/>
 				</div>
 				<div className="col-span-full sm:col-span-3">
-					<label  className="text-sm">Email</label>
-					<input id="email" name="email" type="email" defaultValue={email} placeholder="Email" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
+					<label  className="text-sm">Provider Email</label>
+					<input id="providerEmail" name="providerEmail" type="providerEmail" defaultValue={providerEmail} placeholder="providerEmail" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">User Email</label>
-					<input id="userEmail" name="userEmail" type="email" defaultValue={user?.email} placeholder="Email" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
+					<input id="email" name="email" type="providerEmail" defaultValue={user?.email} placeholder="providerEmail" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 				</div>
 				
 				<div className="col-span-full sm:col-span-3">

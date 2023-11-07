@@ -1,13 +1,24 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router-dom';
 import SingleManageServices from './SingleManageServices';
+import { AuthContext } from '../../../firebase/AuthProvider';
 
 const ManageService = () => {
+const {user} = useContext(AuthContext)
+const email = user?.email;
+console.log(email);
+    const [services,setServices] = useState([])
+    //const {providerEmail} =useParams()
     const data = useLoaderData();
+    console.log(data);
    
+   useEffect(()=>{
+    const remaining = data?.filter((item) => 
+    item.providerEmail === email )
    
-    const [services,setServices] = useState(data)
+    setServices(remaining);
+   },[data,email])
 
      
     

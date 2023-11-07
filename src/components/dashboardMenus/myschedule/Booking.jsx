@@ -22,7 +22,7 @@ const Booking = ({services}) => {
 						<p>{date}</p>
 					</td>
 					<td className="px-3 py-2 w-[100px]">
-						<p>{userEmail}</p>
+						<p>{email}</p>
 					</td>
 					<td className= "px-3 py-2 w-[100px]">
 						<p>{area}</p>

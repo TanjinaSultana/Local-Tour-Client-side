@@ -15,7 +15,7 @@ const MySchedule = () => {
     const [booking,setBooking] = useState([]);
     const axiosSecure = AxiosUse()
     //const navigate = useNavigate();
-    const url =`/userService?userEmail=${user?.email}`
+    const url =`/userService?email=${user?.email}`
    
     useEffect(()=>{
         axiosSecure.get(url)

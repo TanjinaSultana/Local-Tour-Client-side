@@ -66,8 +66,19 @@ const Login = () => {
 		e.preventDefault()
 		googleSignIn()
 		.then(result =>{
-			toast.success("Login With Google Succesfully");
-			navigate("/")
+			const logUser = result.user;
+				console.log(logUser);
+				const user = {email};
+				toast.success("Login Successfully")
+				navigate('/')
+				axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+				.then(res =>
+					{
+						console.log(res.data);
+						if(res.data.success){
+							navigate("/")
+						}
+					})
 		})
 	}
     return (

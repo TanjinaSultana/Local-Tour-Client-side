@@ -3,7 +3,7 @@ import React from 'react';
 import Swal from 'sweetalert2';
 
 const UpdateService = ({open,close,service}) => {
-    const {_id,serviceName,name,image,email,area,price,shortDesc,providerImage} = service;
+    const {_id,serviceName,name,image,providerEmail,area,price,shortDesc,providerImage} = service;
     if(!open){
         return null;
     }
@@ -11,14 +11,14 @@ const UpdateService = ({open,close,service}) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const email = form.email.value;
+        const providerEmail = form.providerEmail.value;
         const image = form.image.value;
         const serviceName = form.serviceName.value;
         const area = form.area.value;
         const shortDesc = form.shortDesc.value;
         const price = form.price.value;
         // const rating = form.Rating.value;
-        const updateProduct = {serviceName,name,image,email,area,price,shortDesc};
+        const updateProduct = {serviceName,name,image,providerEmail,area,price,shortDesc};
         fetch(`http://localhost:5000/service/${_id}`,{
             method:'PUT',
             headers:{
@@ -72,8 +72,8 @@ const UpdateService = ({open,close,service}) => {
 					<input  id="photo" name="image" defaultValue={providerImage} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
-					<label  className="text-sm">Email</label>
-					<input id="email" name="email" type="email" defaultValue={email} placeholder="Email" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
+					<label  className="text-sm">providerEmail</label>
+					<input id="providerEmail" name="providerEmail" type="providerEmail" defaultValue={providerEmail} placeholder="providerEmail" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" readOnly />
 				</div>
 				
 				<div className="col-span-full sm:col-span-3">
