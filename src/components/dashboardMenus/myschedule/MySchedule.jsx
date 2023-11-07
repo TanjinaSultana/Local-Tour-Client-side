@@ -4,23 +4,37 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../firebase/AuthProvider";
 import Booking from "./Booking";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import AxiosUse from "../../../hook/AxiosUse";
+
+import MyPending from "./MyPending";
 
 
 
 const MySchedule = () => {
-    const {user} = useContext(AuthContext);
-    //console.log(user?.email);
     const [booking,setBooking] = useState([]);
+    const [bookingConfirm,setBookingConfirm] = useState([]);
+    const data = useLoaderData();
+    const {user} = useContext(AuthContext);
+    const email = user?.email;
+    //console.log(user?.email);
     const axiosSecure = AxiosUse()
     //const navigate = useNavigate();
+    useEffect(()=>{
+        const remaining = data?.filter((item) => 
+        item.providerEmail === email )
+        const confirmBoking = data?.filter((item) => 
+         item.status === 'confirm' )
+        setBooking(remaining)
+        setBookingConfirm(confirmBoking);
+    },[data,email])
     const url =`/userService?email=${user?.email}`
    
     useEffect(()=>{
         axiosSecure.get(url)
         .then(res =>{
             setBooking(res.data);
+            setBookingConfirm(res.data);
         })
 // fetch(url,{credentials:'include'})
 // .then(res=> res.json())
@@ -31,9 +45,10 @@ const MySchedule = () => {
 // })
     },[url,axiosSecure])
     console.log(booking);
+    console.log(bookingConfirm);
     return (
         <div>
-            <h1>{booking.length}</h1>
+            <h1>My Bookings</h1>
             {
                 booking.length<1?<h1>No Services Are Booked</h1>
                 :(
@@ -73,6 +88,52 @@ const MySchedule = () => {
                 
         }
           
+		</table>
+	</div>
+</div>
+
+
+
+                )
+            }
+           
+            {
+                bookingConfirm.length<1?<h1>No Pending Work</h1>:(
+                
+                <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
+	<h2 className="mb-4 text-2xl font-semibold text-black text-center">My Pending Work </h2>
+	<div className="">
+		<table className="min-w-full text-xs">
+			<colgroup>
+				<col></col>
+				<col></col>
+				<col></col>
+				<col></col>
+				<col></col>
+				<col className="w-24"></col>
+			</colgroup>
+			<thead className="dark:bg-gray-700">
+				<tr className="text-left">
+					<th className="p-3">Invoice #</th>
+					<th className="p-3">Client</th>
+					<th className="p-3">Issued</th>
+					<th className="p-3">Due</th>
+					<th className="p-3 text-right">Amount</th>
+					<th className="p-3">Status</th>
+				</tr>
+			</thead>
+			<tbody className="text-black">
+				
+			{
+                 bookingConfirm?.map(service =>(
+
+                    <MyPending 
+                    key={service._id} 
+                    services={service}></MyPending>
+                 ))
+            }
+				
+			</tbody>
 		</table>
 	</div>
 </div>

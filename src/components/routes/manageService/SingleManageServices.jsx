@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 
@@ -7,9 +8,11 @@ import UpdateService from './updateService';
 
 
 
+
+
 const SingleManageServices = ({service,services,setServices}) => {
     const [isOpen,setIsOpen] = useState(false);
-    const {serviceName,image,price,area,_id} = service;
+    const {serviceName,image,price,area,_id,status} = service;
 const handleDelete = (_id) => {
     Swal.fire({
         title: 'Are you sure?',
@@ -63,6 +66,7 @@ const closeModal = ()=>{
     setIsOpen(false)
 }
     
+
     return (
                       
 
@@ -113,6 +117,21 @@ const closeModal = ()=>{
 		<button onClick={() => handleUpdateBtn()} type="button" className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">
 			<span className="sr-only sm:not-sr-only">Update</span>
 		</button>
+		{/* <Link to={`/${_id}`}>
+			<button type="button" className="flex items-center justify-end  p-1 space-x-1.5">
+				View Details
+			</button>
+	</Link> */}
+		{
+			
+			status === 'confirm'
+			?
+		<button onClick={()=> handleStatus(_id)}  type="button" className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">
+			<span className="sr-only sm:not-sr-only">Completed</span>
+		</button>
+			:
+			<span>Pending</span>
+		}
         
                 <UpdateService open ={isOpen} close={closeModal} service={service}></UpdateService>
         

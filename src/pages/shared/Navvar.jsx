@@ -180,8 +180,11 @@ const Navvar = () => {
             </>:
         } */}
 		<div className="items-center flex-shrink-0 hidden lg:flex">
-<button onClick={handleLogOut}>Logout</button>
+			{
+				user?
+<button onClick={handleLogOut}>Logout</button>:
 <NavLink to='/login' className=" btn self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Login</NavLink>
+			}
 	
 
 

@@ -1,6 +1,7 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import SingleManageServices from './SingleManageServices';
 import { AuthContext } from '../../../firebase/AuthProvider';
 
@@ -9,6 +10,7 @@ const {user} = useContext(AuthContext)
 const email = user?.email;
 console.log(email);
     const [services,setServices] = useState([])
+    
     //const {providerEmail} =useParams()
     const data = useLoaderData();
     console.log(data);
@@ -20,7 +22,39 @@ console.log(email);
     setServices(remaining);
    },[data,email])
 
-     
+//    const handleStatus = _id =>{
+// 	fetch(`http://localhost:5000/service/${_id}`,{
+// 		method:'PATCH',
+// 		headers :{
+// 			'content-type':'application/json'
+// 		},
+// 		body: JSON.stringify({status:'confirm'})
+// 	})
+// 	.then(res => {
+// 		 return res.json()
+// 	}
+// 	)
+// 	.then(data =>{
+// 		console.log(data);
+// 		if(data && data.modifiedCount>0){
+// 			const remaining = services.filter(service => service._id !== _id)
+// 			const updated = services.find(service => service._id === _id);
+//             updated.status ='confirm'
+//            const newBooking = [updated, ...remaining]
+//            setServices(newBooking);
+           
+// 			// Swal.fire({
+// 			// 	title: "Good job!",
+// 			// 	text: "You Confirmed the Service",
+// 			// 	icon: "success"
+// 			//   });
+			  
+// 		}
+// 	})
+// 	.catch((error) => {
+// 		console.error('Error:', error);
+// 	  });
+// }
     
     return (
         <div>
@@ -33,8 +67,10 @@ console.log(email);
                 key={item._id} 
                 service={item}
                  services={services}
+                
                  setServices={setServices}></SingleManageServices>)
             }
+
             </div>
         </div>
     );

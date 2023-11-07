@@ -19,6 +19,7 @@ import Service from './components/routes/ServicePage/Service';
 import SingleService from './components/routes/ServicePage/SingleService';
 import MySchedule from './components/dashboardMenus/myschedule/MySchedule';
 import ErrorPage from './components/routes/ErrorPage';
+import ProviderService from './components/routes/providerServices/ProviderService';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
           loader: () => fetch('http://localhost:5000/service')
         },
         {
+          path: "/providerService",
+          element: <ProviderService></ProviderService>,
+          loader: () => fetch('http://localhost:5000/service')
+        },
+        {
           path: "/addService",
           element: <PrivateRoute>
 
@@ -60,7 +66,7 @@ const router = createBrowserRouter([
             <ManageService></ManageService>
           </PrivateRoute>
           ,
-          loader: () => fetch('http://localhost:5000/service'),
+          loader: () => fetch('http://localhost:5000/service')
         },
         
         {
@@ -68,13 +74,14 @@ const router = createBrowserRouter([
           element: <PrivateRoute>
          <SingleService></SingleService>
           </PrivateRoute>,
-          loader: () => fetch('http://localhost:5000/service'),
+          loader: () => fetch('http://localhost:5000/service')
         },
         {
           path: "/schedule",
           element: <PrivateRoute>
          <MySchedule></MySchedule>
           </PrivateRoute>,
+           loader: () => fetch('http://localhost:5000/service')
          
         },
         

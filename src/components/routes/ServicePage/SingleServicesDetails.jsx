@@ -5,6 +5,7 @@ import SingleModal from "./SingleModal";
 
 const SingleServicesDetails = ({services}) => {
     const [isOpen,setIsOpen] = useState(false);
+	console.log(services);
     const {serviceName,image,price,area,_id,providerImage,name,shortDesc} = services;
     const handleBookBtn = () =>{
         setIsOpen(true)
