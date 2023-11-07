@@ -1,3 +1,6 @@
+
+// import Exam from "../../../router/Exam";
+// import E from "../../../router/Exam";
 import Banner from "./Banner";
 import CallToAction from "./CallToAction";
 import Gallery from "./Gallery";
@@ -9,6 +12,7 @@ import Review from "./Review";
 const Home = () => {
     return (
         <div>
+         {/* <Exam></Exam> */}
             <Banner></Banner>
             <PopularService></PopularService>
             <Gallery></Gallery>

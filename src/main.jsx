@@ -18,10 +18,12 @@ import PrivateRoute from './router/PrivateRoute';
 import Service from './components/routes/ServicePage/Service';
 import SingleService from './components/routes/ServicePage/SingleService';
 import MySchedule from './components/dashboardMenus/myschedule/MySchedule';
+import ErrorPage from './components/routes/ErrorPage';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage></RootPage>,
+    errorElement:<ErrorPage></ErrorPage>,
    
     children:[
       
