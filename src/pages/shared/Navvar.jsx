@@ -50,6 +50,11 @@ const Navvar = () => {
     isPending ? "pending" : isActive ? "flex font-bold items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2"
   }>Services</NavLink>
 			</li>
+      <li className="flex">
+      <NavLink to='/providerService' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Single Service</NavLink>
+    </li>
 			<li className="flex">
         
 
@@ -102,19 +107,20 @@ const Navvar = () => {
           }
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-      ><div className="bg-[#FFBD76] p-10">
+      >
+        <div className="bg-[#FFBD76] p-10">
 
 
         <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
   }  ><NavLink to='/manageServices' className = {({ isActive, isPending }) =>
-  isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+  isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
 } >My Services</NavLink></motion.li>
         <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
   } ><NavLink to='/addService'>Add Services</NavLink></motion.li>
         <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
   } ><NavLink to='/schedule'>My Schedule</NavLink></motion.li>
       </div>
         
@@ -123,6 +129,7 @@ const Navvar = () => {
 
 	
 			</li>
+
 		</ul>
     :(
 
@@ -157,6 +164,7 @@ const Navvar = () => {
 
 
 
+  
         <motion.nav
       initial={false}
       animate={isOpen ? "open" : "closed"}
@@ -205,13 +213,109 @@ const Navvar = () => {
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
       >
-        <motion.li variants={itemVariants}>Item 1</motion.li>
-        <motion.li variants={itemVariants}>Item 2</motion.li>
-        <motion.li variants={itemVariants}>Item 3</motion.li>
-        <motion.li variants={itemVariants}>Item 4</motion.li>
-        <motion.li variants={itemVariants}>Item 5</motion.li>
+        {
+          user?( 
+            <div className="bg-[#FFBD76] p-3">
+
+              <NavLink to='/'className = {({ isActive, isPending }) =>
+           isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+         }>Home</NavLink>
+           <NavLink to='/service' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Services</NavLink>
+   <NavLink to='/providerService' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Single Service</NavLink>
+  <motion.nav
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+      className="menu mt-[20px]"
+    >
+      <motion.button
+        whileTap={{ scale: 0.97 }}
+        onClick={() => setIsOpen(!isOpen)}
+       
+      >
+        <NavLink  className = {({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? "flex items-center font-bold  px-4 -mb-1 border-b-2 " : "flex font-medium items-center px-4 mb-1 border-b-2 "
+      }>
+
+       Dashboard
+        </NavLink>
+        <motion.div
+          variants={{
+            open: { rotate: 180 },
+            closed: { rotate: 0 }
+          }}
+          transition={{ duration: 0.2 }}
+          style={{ originY: 0.55 }}
+        >
+        
+        </motion.div>
+      </motion.button>
+      <motion.ul
+        variants={{
+          open: {
+            clipPath: "inset(0% 0% 0% 0% round 10px)",
+            transition: {
+              type: "spring",
+              bounce: 0,
+              duration: 0.7,
+              delayChildren: 0.3,
+              staggerChildren: 0.05
+            }
+          },
+          closed: {
+            clipPath: "inset(10% 50% 90% 50% round 10px)",
+            transition: {
+              type: "spring",
+              bounce: 0,
+              duration: 0.3
+            }
+          }
+        }}
+        style={{ pointerEvents: isOpen ? "auto" : "none" }}
+      >
+        <div className=" p-10">
+
+
+        <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+  }  ><NavLink to='/manageServices' className = {({ isActive, isPending }) =>
+  isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+} >My Services</NavLink></motion.li>
+        <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+  } ><NavLink to='/addService'>Add Services</NavLink></motion.li>
+        <motion.li variants={itemVariants} className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center px-4 mb-1 border-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex items-center px-4 mb-1 border-b-2 "
+  } ><NavLink to='/schedule'>My Schedule</NavLink></motion.li>
+      </div>
+        
       </motion.ul>
     </motion.nav>
+    <button onClick={handleLogOut} className="font-bold p-4 rounded-lg text-white bg-[#5E6284]  text-xl">Logout</button>
+            </div>
+          ):(<div className="bg-[#FFBD76] p-10">
+             
+               <NavLink to='/'className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Home</NavLink>
+   <NavLink to='/service' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Services</NavLink>
+    <NavLink to='/providerService' className = {({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "flex items-center font-bold px-4 mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400" : "flex font-medium items-center px-4 mb-1 border-b-2 "
+  }>Single Service</NavLink>
+            <NavLink to='/login' className=" btn 4 font-bold p-4 rounded-lg text-white bg-[#5E6284]  text-xl">Login</NavLink>
+          </div>)
+
+        }
+     
+</motion.ul>
+    </motion.nav>
+    
+
 
 		<div className="items-center flex-shrink-0 hidden lg:flex">
 			{

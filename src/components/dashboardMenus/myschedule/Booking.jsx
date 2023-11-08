@@ -3,7 +3,7 @@
 
 
 const Booking = ({services}) => {
-    const {serviceName,name,image,email,date,userEmail,price,providerImage,area} = services;
+    const {serviceName,name,image,email,date,providerEmail,price,providerImage,area} = services;
     return (
         <div>
          <tbody className="border-b  text-white bg-[#5E6284] ">
@@ -22,7 +22,7 @@ const Booking = ({services}) => {
 						<p>{date}</p>
 					</td>
 					<td className="px-3 py-2 w-[100px]">
-						<p>{email}</p>
+						<p>{providerEmail}</p>
 					</td>
 					<td className= "px-3 py-2 w-[100px]">
 						<p>{area}</p>

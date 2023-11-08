@@ -26,7 +26,7 @@ const handleDelete = (_id) => {
       }).then((result) => {
         if (result.isConfirmed) {
          
-          fetch(`http://localhost:5000/service/${_id}`,{
+          fetch(`https://service-server-side-three.vercel.app/service/${_id}`,{
             method:'DELETE'
           })
           .then(res=>res.json())

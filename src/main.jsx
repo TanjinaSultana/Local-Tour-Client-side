@@ -22,6 +22,7 @@ import ErrorPage from './components/routes/ErrorPage';
 import ProviderService from './components/routes/providerServices/ProviderService';
 import ProviderServiceDetails from './components/routes/providerServices/ProviderServiceDetails';
 import UpdateService from './components/routes/manageService/updateService';
+import { Title } from './unsed/Title';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
         element: <Home></Home>,
         loader: () => fetch('https://service-server-side-three.vercel.app/service')
       },
+      
       {
         path: "/login",
         element: <Login></Login>

@@ -26,7 +26,7 @@ const SingleModal = ({service,open,close}) => {
         // const rating = form.Rating.value;
         const updateProduct = {serviceName,name,providerImage,email,image,providerEmail,area,price,date};
         
-        fetch('http://localhost:5000/userService',{
+        fetch('https://service-server-side-three.vercel.app/userService',{
             method:'POST',
             headers:{
               'content-type':'application/json'

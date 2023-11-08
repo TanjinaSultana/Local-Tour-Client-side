@@ -1,50 +1,47 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-unreachable */
 /* eslint-disable react/no-unknown-property */
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../firebase/AuthProvider";
 import Booking from "./Booking";
-import { useLoaderData} from "react-router-dom";
+import { useLoaderData, useLocation} from "react-router-dom";
 import AxiosUse from "../../../hook/AxiosUse";
 
 import MyPending from "./MyPending";
 import axios from "axios";
 
 
-
-const MySchedule = () => {
+const MySchedule = ({service}) => {
+    console.log(service);
     
     const [booking,setBooking] = useState([]);
     const [bookingConfirm,setBookingConfirm] = useState([]);
     const data = useLoaderData();
     const {user} = useContext(AuthContext);
     const email = user?.email;
-    //console.log(user?.email);
     const axiosSecure = AxiosUse()
-    //const navigate = useNavigate();
-    useEffect(()=>{
-        const remaining = data?.filter((item) => 
-        item.email == email )
-        const confirmBoking = data?.filter((item) => 
-         item.status === 'confirm' )
-        setBooking(remaining)
-        setBookingConfirm(confirmBoking);
-    },[data,email])
-    const url =`http://localhost:5000/userService?email=${user?.email}`
-   
-    useEffect(()=>{
-        axios.get(url,{withCredentials:true})
-        .then(res =>{
-            setBooking(res.data);
-            setBookingConfirm(res.data);
-        })
-// fetch(url,{credentials:'include'})
-// .then(res=> res.json())
-// .then(data=>{
-   
-//     setBooking(data);
-   
-// })
+    const location = useLocation();
+    useEffect(() => {
+        document.title = `Local Tour & Guide | ${location.pathname}`;
+      }, [location.pathname]);
+       useEffect(()=>{
+                const remaining = data?.filter((item) => 
+                item.email == email )
+                const confirmBoking = data?.filter((item) => 
+                 item.providerEmail === email )
+                setBooking(remaining)
+                setBookingConfirm(confirmBoking);
+            },[data,email])
+      const url =`https://service-server-side-three.vercel.app/userService?email=${user?.email}`
+      
+      useEffect(()=>{
+          axios.get(url,{withCredentials:true})
+          .then(res =>{
+              setBooking(res.data);
+              setBookingConfirm(res.data);
+           
+            })
     },[url,axiosSecure])
     console.log(booking);
     console.log(bookingConfirm);
@@ -122,7 +119,7 @@ const MySchedule = () => {
                                     <th className="p-3  w-[100px]">Price</th>
                                     <th className="p-3  w-[100px]">Service Tracking Date</th>
                                     <th className="p-3  w-[100px]">Email</th>
-                                    <th className="p-3  ">Area</th>
+                                    <th className="p-3  ">Status</th>
                                     
                                 </th>
                                 

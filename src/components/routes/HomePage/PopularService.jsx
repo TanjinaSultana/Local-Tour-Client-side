@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import PopularServiceCard from "./PopularServiceCard";
+import { Typewriter } from "react-simple-typewriter";
 
 
 const PopularService = () => {
@@ -7,8 +8,21 @@ const PopularService = () => {
     const services  = service.slice(0,4);
     
     return (
-        <div className="mt-48">
-           <h1 className="text-center text-3xl font-bold my-4">Take a look <br></br >At Our Most Popular Tour</h1>
+        <div className="text-center text-3xl font-bold my-4 mt-48">
+            <Typewriter
+    cursor
+    cursorBlinking
+    delaySpeed={1000}
+    deleteSpeed={25}
+    loop={0}
+    typeSpeed={75}
+    words={[
+      'Take a Look',
+      'At Our Most Popular Tour',
+     
+    ]}
+  />
+           {/* <h1 className="text-center text-3xl font-bold my-4">Take a look <br></br >At Our Most Popular Tour</h1> */}
            <div className="flex flex-col gap-10  justify-center items-center">
 
             {

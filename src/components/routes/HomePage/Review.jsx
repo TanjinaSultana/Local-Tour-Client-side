@@ -3,7 +3,7 @@
 const Review = () => {
     return (
         <div className="my-24">
-            <section className="my-8 dark:bg-gray-800 dark:text-gray-100">
+            <section className="my-8 ">
 	<div className="container flex flex-col items-center mx-auto mb-12 md:p-10 md:px-12">
 		<h1 className="p-4 text-4xl font-semibold leadi text-center">Customers Reviews</h1>
 	</div>

@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import SingleManageServices from './SingleManageServices';
 import { AuthContext } from '../../../firebase/AuthProvider';
 
@@ -15,7 +15,10 @@ console.log(email);
     //const {providerEmail} =useParams()
     const data = useLoaderData();
     console.log(data);
-   
+    const location = useLocation();
+    useEffect(() => {
+        document.title = `Local Tour & Guide | ${location.pathname}`;
+      }, [location.pathname]);
    useEffect(()=>{
     const remaining = data?.filter((item) => 
     item.providerEmail === email )
@@ -24,7 +27,7 @@ console.log(email);
    },[data,email])
 
 //    const handleStatus = _id =>{
-// 	fetch(`http://localhost:5000/service/${_id}`,{
+// 	fetch(`https://service-server-side-three.vercel.app/service/${_id}`,{
 // 		method:'PATCH',
 // 		headers :{
 // 			'content-type':'application/json'

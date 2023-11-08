@@ -19,7 +19,7 @@ const UpdateService = ({open,close,service}) => {
         const price = form.price.value;
         // const rating = form.Rating.value;
         const updateProduct = {serviceName,name,image,providerEmail,area,price,shortDesc};
-        fetch(`http://localhost:5000/service/${_id}`,{
+        fetch(`https://service-server-side-three.vercel.app/service/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -68,8 +68,8 @@ const UpdateService = ({open,close,service}) => {
 					<input  id="photo" name="image" defaultValue={image} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
-					<label  className="text-sm">Service Image</label>
-					<input  id="photo" name="image" defaultValue={providerImage} type="text" placeholder="Service Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
+					<label  className="text-sm">provider Image</label>
+					<input  id="photo" name="image" defaultValue={providerImage} type="text" placeholder="Provider Image" className="p-3 w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900" />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label  className="text-sm">providerEmail</label>

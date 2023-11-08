@@ -2,8 +2,8 @@
 /* eslint-disable react/no-unescaped-entities */
  /* eslint-disable react/no-unknown-property */
 
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../firebase/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -17,7 +17,10 @@ const Login = () => {
 	const navigate = useNavigate();
 
 
-
+	const location = useLocation();
+    useEffect(() => {
+        document.title = `Local Tour & Guide | ${location.pathname}`;
+      }, [location.pathname]);
 
 
 
@@ -31,7 +34,7 @@ const Login = () => {
 				console.log(logUser);
 				toast.success("Login Successfully")
 				navigate('/')
-				// axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+				// axios.post('https://service-server-side-three.vercel.app/jwt',user,{withCredentials:true})
 				// .then(res =>
 				// 	{
 				// 		console.log(res.data);
@@ -40,7 +43,7 @@ const Login = () => {
 				// 		}
 				// 	})
 			
-	// 			fetch('http://localhost:5000/jwt',{
+	// 			fetch('https://service-server-side-three.vercel.app/jwt',{
     //     method:'POST',
     //     headers:{
     //       'content-type':'application/json'
@@ -70,7 +73,7 @@ const Login = () => {
 				//const user = {email};
 				toast.success("Login Successfully")
 				navigate('/')
-				// axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+				// axios.post('https://service-server-side-three.vercel.app/jwt',user,{withCredentials:true})
 				// .then(res =>
 				// 	{
 				// 		console.log(res.data);
@@ -84,7 +87,7 @@ const Login = () => {
         <div className="my-20  flex justify-center ">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
 	<h1 className="text-2xl font-bold text-center">Login</h1>
-	<form novalidate="" action="" className="space-y-6">
+	<form  action="" className="space-y-6">
 		<div className="space-y-1 text-sm">
 			<label for="email" className="block dark:text-gray-400">Email</label>
 			<input onChange={(e) =>

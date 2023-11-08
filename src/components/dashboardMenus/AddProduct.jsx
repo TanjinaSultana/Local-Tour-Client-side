@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unknown-property */
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import  { AuthContext } from "../../firebase/AuthProvider";
 //import axios from "axios";
 import toast from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 
 
 const AddProduct = () => {
@@ -19,17 +20,20 @@ const AddProduct = () => {
     const [price,setPrice] = useState( "");
     const [shortDesc,setShortDesc] = useState("");
     //console.log(name,providerEmail);
-    
+    const location = useLocation();
+    useEffect(() => {
+        document.title = `Local Tour & Guide | ${location.pathname}`;
+      }, [location.pathname]);
     const handleAdd = (e) =>{
         e.preventDefault();
        console.log({serviceName,name,image,providerImage,providerEmail,area,price,shortDesc});
        const userData=  {serviceName,name,image,providerEmail,area,price,shortDesc}
-    //    axios.post('http://localhost:5000/product',userData)
+    //    axios.post('https://service-server-side-three.vercel.app/product',userData)
     //    .then(res =>{
     //     console.log(res.data);
     //    }  )
     
-    fetch('http://localhost:5000/service',{
+    fetch('https://service-server-side-three.vercel.app/service',{
         method:'POST',
         headers:{
           'content-type':'application/json'
@@ -43,7 +47,7 @@ const AddProduct = () => {
           toast.success("Data Added successfully");
         }
       })
-    //   axios.post('http://localhost:5000/product', userData)
+    //   axios.post('https://service-server-side-three.vercel.app/product', userData)
     //     .then((res) => {
     //       console.log('Response data:', res.data);
     //     })

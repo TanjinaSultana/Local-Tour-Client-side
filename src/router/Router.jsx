@@ -13,7 +13,7 @@
 // //     console.log(services);
 
 // //     const handleDelete = (_id) => {
-// //    fetch(`http://localhost:5000/service/${_id}`,{
+// //    fetch(`https://service-server-side-three.vercel.app/service/${_id}`,{
 // //     method:'DELETE'
 // //    })
 // //    .then(res=>res.json())
@@ -29,7 +29,7 @@
 // //        }
 // //    }
 // //    )
-//         // fetch(`http://localhost:5000/service/${_id}`,{
+//         // fetch(`https://service-server-side-three.vercel.app/service/${_id}`,{
 //         //     method:'DELETE'
 //         // })
 //         // .then(res=> res.json())
@@ -51,7 +51,7 @@
 //             //         confirmButtonText: 'Yes, delete it!'
 //             // }).then((result) => {
 //             //     if (result.isConfirmed) {
-//             //         fetch(`http://localhost:5000/service/${id}`, {
+//             //         fetch(`https://service-server-side-three.vercel.app/service/${id}`, {
 //             //             method: 'DELETE'
 //             //         })
 //             //         .then(res => res.json())
@@ -86,7 +86,7 @@
 //         //   }).then((result) => {
 //         //     if (result.isConfirmed) {
              
-//         //       fetch(`http://localhost:5000/service/${_id}`,{
+//         //       fetch(`https://service-server-side-three.vercel.app/service/${_id}`,{
 //         //         method:'DELETE'
 //         //       })
 //         //       .then(res=>res.json())

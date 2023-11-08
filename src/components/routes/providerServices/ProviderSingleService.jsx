@@ -10,7 +10,7 @@ const ProviderSingleService = ({services}) => {
     const [service,setService] =useState([])
     const {serviceName,image,price,area,_id,providerImage,name,shortDesc} = services;
     const handleStatus = _id =>{
-        fetch(`http://localhost:5000/service/${_id}`,{
+        fetch(`https://service-server-side-three.vercel.app/userService/${_id}`,{
             method:'PATCH',
             headers :{
                 'content-type':'application/json'

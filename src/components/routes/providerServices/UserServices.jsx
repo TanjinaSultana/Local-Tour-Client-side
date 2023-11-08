@@ -5,8 +5,8 @@ const UserServices = ({services}) => {
     const {serviceName,image,price,area,_id,providerImage,name} = services;
     return (
         <div>
-               <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
-        <div className="flex space-x-4">
+               <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#EAEBF0] text-black">
+        <div className="flex space-x-4 ">
             <img alt="" src={providerImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
             <div className="flex flex-col space-y-1">
                 <a rel="noopener noreferrer" href="#" className="text-sm font-semibold">{name}</a>
@@ -23,9 +23,9 @@ const UserServices = ({services}) => {
                 
             </div>
             <div className="flex space-x-2 text-sm dark:text-gray-400">
-                <button type="button" className="flex items-center -mt-52 p-1 space-x-1.5">
-                    <span>Price:{price}</span>
-                    <span>Area:{area}</span>
+                <button type="button" className="flex items-center -mt-24 p-1 space-x-1.5">
+                    <span className='font-bold text-base'>Price:{price}</span>
+                    <span className='font-bold text-base'>Area:{area}</span>
                 </button>
                 
                 

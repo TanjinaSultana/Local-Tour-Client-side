@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import React from 'react';
 
@@ -22,6 +23,9 @@ const MyPending = ({services}) => {
 						<p>{date}</p>
 					</td>
 					<td className="px-3 py-2 w-[100px]">
+						<p>{providerEmail}</p>
+					</td>
+					<td className="px-3 py-2 w-[100px]">
 						<p>{email}</p>
 					</td>
                     
@@ -29,14 +33,14 @@ const MyPending = ({services}) => {
 			
 			
             <td className="p-3 text-right">
-{
+{   status?(
 status === 'confirm'
 ?
 <button  type="button" className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">
-<span className="sr-only sm:not-sr-only">Completed</span>
+<span className="sr-only sm:not-sr-only">{status}</span>
 </button>
 :
-<span type="button" className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">Pending</span>
+<span type="button" className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">Progress</span>):<span type="button" className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">Pending</span>
 }
 					
 				</td>

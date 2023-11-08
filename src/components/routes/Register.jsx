@@ -1,8 +1,8 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable react/no-unknown-property */
 
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../firebase/AuthProvider";
 import toast from "react-hot-toast";
 
@@ -15,6 +15,10 @@ const Register = () => {
 	const [password,setPassword] = useState("");
 	const [error,setError] = useState("");
 	const navigate = useNavigate()
+	const location = useLocation();
+    useEffect(() => {
+        document.title = `Local Tour & Guide | ${location.pathname}`;
+      }, [location.pathname]);
 	const handleRegister = (e) =>{
 		e.preventDefault();
 		if (/^(?=.*[A-Z])(?=.*[\W_]).{6,}$/.test(password)        ) {
@@ -45,7 +49,7 @@ const Register = () => {
 		<h1 className="my-3 text-4xl font-bold">Register</h1>
 		<p className="text-sm dark:text-gray-400">Register to access your account</p>
 	</div>
-	<form novalidate="" action="" className="space-y-12">
+	<form action="" className="space-y-12">
 		<div className="space-y-4">
 			<div>
 				<label for="name" className="block mb-2 text-sm">Name</label>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import Services from './Services';
 
 const Service = () => {
@@ -11,15 +11,15 @@ const Service = () => {
     const service = data.slice(0,6);
     const services = show ? data : service
    //const url ={};
+   const location = useLocation();
+   useEffect(() => {
+       document.title = `Local Tour & Guide | ${location.pathname}`;
+     }, [location.pathname]);
    const handleInputValue = (e) =>{
     setSearchValue(e.target.value);
    }
 
    const handleBtn = () =>{
-   fetch(`http://localhost:5000/myservice?serviceName=${serviceName}`)
-   .then(res => res.json())
-   .then(data => {
-    console.log(data);
     const remaining =data.filter(item =>
         item.serviceName.toLowerCase() === searchValue.toLowerCase()
         );
@@ -27,7 +27,7 @@ const Service = () => {
         setServiceName(remaining);
          setSearch(true);
          setSearchValue("");
-   })
+
    }
 
     return (
@@ -51,9 +51,9 @@ const Service = () => {
                     
             }
             
-{data.length >6 && !show && (
+{serviceName.length >6 && !show && (
 
-<button onClick={()=> setShow(true)}>Show All</button> 
+<button onClick={()=> setShow(true)} className='btn font-bold p-4 rounded-lg text-white bg-[#5E6284]  text-xl'>Show All</button> 
 )
 }
             </div>
@@ -68,7 +68,7 @@ const Service = () => {
      
 {data.length >6 && !show && (
 
-<button onClick={()=> setShow(true)}>Show All</button> 
+<button onClick={()=> setShow(true)} className='btn font-bold p-4 rounded-lg text-white bg-[#5E6284]  text-xl'>Show All</button> 
 )
 }
      </div>
