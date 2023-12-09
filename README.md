@@ -5,18 +5,26 @@
 • There are some services about Tour & Guide Related.
 • Showing services by Card
 
+#Features:
+
 -Feature 1:
 •Service Card:Clicking the view details it shows the details route on this specific service and with  button book.
+
 -Feature 2: 
 •Authentication: Authentication are added.To explore full website user have to login with registered email and password.
+
 -Feature 3:
 •Details Button:Clicking on details button it take into private route and show login after login the details page and the service details are shown and also appear a Book button clicking on it show a modal for booking confirm.
+
 -Feature 4:
 •Dashboard: Dashboard panel are added with where can add and manage the products.
+
 -Feature 5:
 •Add service:Clicking Add product page  it take into private route and show login after login it appears a with form  where user can add services  and the services are store in db and shown my manage services .
+
 -Feature 6:
 •My manage:Clicking My Manage route it will show all user added services clicking on update button it appear a modal and update the service and also appear remove it will removw the service where user can delete.
+
 -Feature 7:
 •Register Page:By giving the information all clicking register button it will show a toast user created.and navigate the home page.
 •Login page:By giving the information on the input field after submission the login succes toast will be shown and logout,displayname,photo are appear. Initially Login page shown in the navavr but after login logout page shown.
