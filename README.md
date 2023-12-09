@@ -31,10 +31,11 @@ Follow these steps to set project up and running:
 6. install tailwind : `npm install -D tailwindcss postcss autoprefixer npx tailwindcss init -p`
 6. install mambaui : `npm i mambaui`
 7. install toastify : `$ npm install react-hot-toats`
-# Live Link : `https://service-client-side.web.app`
-# Client-Side-Link : `https://github.com/TanjinaSultana/Local-Tour-Client-side`
-# Server-Side-Link : `https://github.com/TanjinaSultana/Local-Tour-Server-Side`
 
+
+<a href="https://service-client-side.web.app">Live Link</a>
+<a href="https://github.com/TanjinaSultana/Local-Tour-Client-side">Client-Side-Link</a>
+<a href="https://github.com/TanjinaSultana/Local-Tour-Server-Side">Server-Side-Link</a>
 
 ## Technology: 
 # Fronted:
@@ -45,7 +46,7 @@ Follow these steps to set project up and running:
 
 ## Usage
 To use this server-client-side application:
-• open the browser with this live link `https://service-client-side.web.app`
+• open the browser with this live link <a href="https://service-client-side.web.app">Live Link</a>
 • Click the select button from the done.
 • Book The Service.
 ## Contributing
